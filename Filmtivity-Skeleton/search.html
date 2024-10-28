@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Filmtivity</title>
+    <link href="./static/css/style.css" type="text/css" rel="stylesheet">
+    <script src="./scripts/search.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <img src="./static/img/logo.png" alt="logo">
+
+        <ul class="menu">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./all.html">All Movies</a></li>
+            <li><a href="./search.html">Search</a></li>
+        </ul>
+
+    </nav>
+    <main>
+        <div class="createSection">
+            <div class="info">
+                <h2>Find Movies</h2>
+                <h4>Discover information about your favorite movies.</h4>
+            </div>
+
+            <form action="#" method="" class="createForm">
+                <h2>Search for </h2>
+                <ul class="noBullet">
+                    <li>
+                        <label for="title">Title:</label>
+                        <input type="text" id="search" class="inputFields" placeholder="Enter movie title...">
+                    </li>
+                    <li id="center-btn">
+                        <button id="search-btn">Search</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <section id="details-page">
+            <div class="main_card">
+                <div class="card_left">
+                    <div class="card_datails">
+
+                        <h1 id="title"></h1>
+                        <h3>Original language: <span id="original_language"></span></h3>
+                        <div class="card_animal">
+                            <p class="card-keyword">Votes: <span class="card-keyword" id="vote_average"></span></p>
+                            <p class="card-keyword">Date: <span class="card-keyword" id="release_date"></span></p>
+                        </div>
+                        <p id="overview"></p>
+                    </div>
+                </div>
+                <div class="card_right">
+                    <img id="poster" src="" alt="Movie poster">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        © Filmtivity
+    </footer>
+</body>
+
+</html>
