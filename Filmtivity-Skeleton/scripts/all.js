@@ -1,10 +1,15 @@
 const API_KEY = '25afacdd7d9acf12478bb0c74e5d129a';
 
+document.addEventListener('DOMContentLoaded', function () {
+    fetchTopTenMovies();
+});
+
 function fetchTopTenMovies() {
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
         .then(response => response.json())
         .then(data => {
             const results = data.results;
+            console.log(results.join(" "));
             displayMovies(results);
         })
         .catch(error => console.error(error));
