@@ -1,3 +1,5 @@
+const API_KEY = '25afacdd7d9acf12478bb0c74e5d129a';
+
 function fetchTopTenMovies() {
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
         .then(response => response.json())
@@ -13,19 +15,19 @@ function displayMovies(movies) {
     movieContainer.innerHTML = '';
 
     movies.forEach(movie => {
-        var movieElement = ` 
-            <div class="flip flip-vertical">
-                <div class="front">
-                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+        let movieCard = document.createElement('div');
+        movieCard.classList.add('col-md-3', 'mb-3');
+        movieCard.innerHTML = `
+            <div class="card">
+                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">   
+                <div class="card-body">
+                    <h5 class="card-title">${movie.title}</h5>
+                    <p class="card-text">${movie.overview}</p>
+                    <a href="#" class="btn btn-primary">Details</a>
                 </div>
-                <div class="back">
-                    <h2>${movie.title}</h2>
-                    <p>Description:${movie.overview}</p>
-                    <p>${movie.vote_average}</p>
-                </div>
-            </div>
+            </div>  
         `;
-        movieContainer += movieElement;
+        movieContainer.appendChild(movieCard);
     });
 }
 
