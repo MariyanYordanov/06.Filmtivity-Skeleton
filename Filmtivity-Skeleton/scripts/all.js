@@ -15,7 +15,7 @@ function fetchTopTenMovies() {
 
 function displayMovies(movies) {
     let movieContainer = document.getElementById('movie-container');
-    movieContainer.innerHTML = '';
+    movieContainer.textContent = '';
 
     movies.forEach(movie => {
         let movieCard = document.createElement('div');
