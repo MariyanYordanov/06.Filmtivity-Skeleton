@@ -2,7 +2,7 @@ const API_KEY = '25afacdd7d9acf12478bb0c74e5d129a';
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('search-btn').addEventListener('click', function (event) {
-        event.preventDefault();                     // Prevents the form from submitting
+        event.preventDefault();                                // Prevents the form from submitting
         const title = document.getElementById('search').value; // Get the movie title from the input field
         title.textContent = '';                                // Clear the previous search results
 
@@ -28,6 +28,4 @@ function fetchMovie(title) {
             document.getElementById('poster').src = 'https://image.tmdb.org/t/p/w500' + results.poster_path;
         })
         .catch(error => console.error(error));
-
-
 }
