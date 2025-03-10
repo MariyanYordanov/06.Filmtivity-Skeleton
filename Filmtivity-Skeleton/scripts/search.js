@@ -1,5 +1,4 @@
 const API_KEY = '25afacdd7d9acf12478bb0c74e5d129a';
-
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('search-btn').addEventListener('click', function (event) {
         event.preventDefault();                                // Prevents the form from submitting
@@ -15,13 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
 function fetchMovie(title) {
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title}`)
         .then(response => response.json())
         .then(data => {
-            const results = data.results[0];
+            const results = data.results[0];  
             document.getElementById('title').textContent = results.title;
+            document.getElementById('original_language').textContent = results.original_language;
             document.getElementById('release_date').textContent = results.release_date;
             document.getElementById('overview').textContent = results.overview;
             document.getElementById('vote_average').textContent = results.vote_average;
