@@ -11,13 +11,12 @@ function fetchTopTenMovies() {
 function displayMovies(movies) {
     const movieContainer = document.getElementById('movie-container');
     movieContainer.innerHTML = '';
-
     movies.forEach(movie => {
         let movieCard = document.createElement('div');
         movieCard.classList.add('flip', 'flip-vertical');
         movieCard.innerHTML = `
-           <div class="front">
-                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">  
+            <div class="front">
+                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}" />  
             </div> 
             <div class="back">
                 <h2>${movie.title}</h2>

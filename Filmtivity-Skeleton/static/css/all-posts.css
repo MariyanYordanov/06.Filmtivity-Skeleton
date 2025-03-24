@@ -88,8 +88,8 @@
         display: block;
         color: white;
         width: inherit;
-        background-size: cover!important;
-        background-position: center!important;
+        background-size: cover;
+        background-position: center;
         height: 350px;
         padding: 1em 1em;
         background: #313131;

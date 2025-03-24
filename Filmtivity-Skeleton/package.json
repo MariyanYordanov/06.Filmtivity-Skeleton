@@ -1,0 +1,12 @@
+{
+  "name": "filmtivity-skeleton",
+  "version": "1.0.0",
+  "description": "my-first-website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "author": "",
+  "license": "MIT"
+}
