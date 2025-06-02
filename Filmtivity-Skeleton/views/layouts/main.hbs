@@ -5,19 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./static/css/style.css" type="text/css" rel="stylesheet">
-    <title>Filmtivity</title>
+    <title>Filmtivity | {{title}}</title>
 </head>
 
 <body>
     <div id="box">
-        {{> navigation}}
-
+        {{> nav}}
         <main>
             {{{body}}}
         </main>
-        <footer>
-            © Filmtivity
-        </footer>
+        {{>footer}}
     </div>
 
 </body>

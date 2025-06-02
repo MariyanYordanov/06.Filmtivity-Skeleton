@@ -174,9 +174,9 @@ import mongoose from 'mongoose';
 export const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI);
-    console.log(`MongoDB свързано: ${conn.connection.host}`);
+    console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`Грешка: ${error.message}`);
+    console.error(`Error: ${error.message}`);
     process.exit(1);
   }
 };

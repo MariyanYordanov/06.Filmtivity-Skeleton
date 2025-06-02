@@ -29,8 +29,8 @@ const PORT = process.env.PORT || 3000;
 
 // Свързване с базата данни
 mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('Успешно свързване с MongoDB'))
-    .catch(err => console.error('Грешка при свързване с MongoDB:', err));
+    .then(() => console.log('Successfully connected to MongoDB'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // Настройка на Handlebars
 app.engine('hbs', engine({
@@ -56,7 +56,7 @@ app.use('/src', express.static(join(__dirname, 'src')));
 // Основен маршрут
 app.get('/', (req, res) => {
     res.render('pages/home', {
-        title: 'Filmtivity',
+        title: 'Home',
         additionalStyles: ['home']
     });
 });
@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 //app.use(userRoutes);
 //app.use(movieRoutes);
 
-// Обработка на 404
+// 404
 app.use((req, res) => {
     res.status(404).render('pages/404', {
         title: 'Page Not Found',
@@ -75,5 +75,5 @@ app.use((req, res) => {
 
 // Стартиране на сървъра
 app.listen(PORT, () => {
-    console.log(`Сървърът е стартиран на порт http://localhost:${PORT}`);
+    console.log(`Server is listening on http://localhost:${PORT}`);
 });
