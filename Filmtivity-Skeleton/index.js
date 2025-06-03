@@ -1,23 +1,15 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { engine } from 'express-handlebars';
 
-// Зареждане на helpers за Handlebars
-//import { helpers } from './config/handlebars-helpers.js';
-
-// Зареждане на маршрути
-//import movieRoutes from './routes/movieRoutes.js';
-//import userRoutes from './routes/userRoutes.js';
-
-// Зареждане на middleware
-//import { isAuthenticated } from './middlewares/authMiddleware.js';
-
 // Зареждане на средата
 dotenv.config();
+
+// Импортиране на connectDB от config
+import connectDB from './config/db.js';
 
 // ESM специфични настройки
 const __filename = fileURLToPath(import.meta.url);
@@ -27,10 +19,8 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Свързване с базата данни
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('Successfully connected to MongoDB'))
-    .catch(err => console.error('Error connecting to MongoDB:', err));
+// Извикване на функцията за свързване с БД
+connectDB();
 
 // Настройка на Handlebars
 app.engine('hbs', engine({
@@ -38,7 +28,6 @@ app.engine('hbs', engine({
     defaultLayout: 'main',
     layoutsDir: join(__dirname, 'views/layouts'),
     partialsDir: join(__dirname, 'views/partials'),
-    //helpers
 }));
 app.set('view engine', 'hbs');
 app.set('views', join(__dirname, 'views'));
@@ -48,10 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(join(__dirname, 'static')));
-
-// Експортиране на src директорията като /src за клиентските скриптове
 app.use('/src', express.static(join(__dirname, 'src')));
-//app.use(isAuthenticated); // Добавяне на middleware за автентикация
 
 // Основен маршрут
 app.get('/', (req, res) => {
@@ -60,10 +46,6 @@ app.get('/', (req, res) => {
         additionalStyles: ['home']
     });
 });
-
-// Добавяне на маршрути
-//app.use(userRoutes);
-//app.use(movieRoutes);
 
 // 404
 app.use((req, res) => {
@@ -75,5 +57,5 @@ app.use((req, res) => {
 
 // Стартиране на сървъра
 app.listen(PORT, () => {
-    console.log(`Server is listening on http://localhost:${PORT}`);
+    console.log(`🚀 Server is listening on http://localhost:${PORT}`);
 });
