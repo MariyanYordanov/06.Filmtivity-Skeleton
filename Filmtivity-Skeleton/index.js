@@ -5,11 +5,10 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { engine } from 'express-handlebars';
 
+import connectDB from './config/db.js';
+
 // Зареждане на средата
 dotenv.config();
-
-// Импортиране на connectDB от config
-import connectDB from './config/db.js';
 
 // ESM специфични настройки
 const __filename = fileURLToPath(import.meta.url);
@@ -19,13 +18,13 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Извикване на функцията за свързване с БД
+// Извикване на функцията за свързване с базата данни
 connectDB();
 
 // Настройка на Handlebars
 app.engine('hbs', engine({
     extname: '.hbs',
-    defaultLayout: 'main',
+    //defaultLayout: 'main',
     layoutsDir: join(__dirname, 'views/layouts'),
     partialsDir: join(__dirname, 'views/partials'),
 }));
@@ -57,5 +56,5 @@ app.use((req, res) => {
 
 // Стартиране на сървъра
 app.listen(PORT, () => {
-    console.log(`🚀 Server is listening on http://localhost:${PORT}`);
+    console.log(`Server is listening on http://localhost:${PORT}`);
 });
